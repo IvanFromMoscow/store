@@ -11,9 +11,9 @@ namespace Store.Tests
         {
             var bookRepositoryStub = new Mock<IBookRepository>();
             bookRepositoryStub.Setup(x => x.GetAllByIsbn(It.IsAny<string>()))
-                              .Returns(new[] { new Book(1, "", "", "") });
+                              .Returns(new[] { new Book(1, "", "", "", "", 0m) });
             bookRepositoryStub.Setup(x => x.GetAllByAuthorOrTitle(It.IsAny<string>()))
-                              .Returns(new[] { new Book(2, "", "", "") });
+                              .Returns(new[] { new Book(2, "", "", "", "", 0m) });
 
             var bookService = new BookService(bookRepositoryStub.Object);
             var actual = bookService.GetAllByQuery("ISBN 1234567000");
@@ -25,9 +25,9 @@ namespace Store.Tests
         {
             var bookRepositoryStub = new Mock<IBookRepository>();
             bookRepositoryStub.Setup(x => x.GetAllByIsbn(It.IsAny<string>()))
-                              .Returns(new[] { new Book(1, "", "", "") });
+                              .Returns(new[] { new Book(1, "", "", "", "", 0m) });
             bookRepositoryStub.Setup(x => x.GetAllByAuthorOrTitle(It.IsAny<string>()))
-                              .Returns(new[] { new Book(2, "", "", "") });
+                              .Returns(new[] { new Book(2, "", "", "", "", 0m) });
 
             var bookService = new BookService(bookRepositoryStub.Object);
             var actual = bookService.GetAllByQuery("123456700");
@@ -39,9 +39,9 @@ namespace Store.Tests
         {
             var bookRepositoryStub = new Mock<IBookRepository>();
             bookRepositoryStub.Setup(x => x.GetAllByIsbn(It.IsAny<string>()))
-                              .Returns(new[] { new Book(1, "", "", "") });
+                              .Returns(new[] { new Book(1, "", "", "", "", 0m) });
             bookRepositoryStub.Setup(x => x.GetAllByAuthorOrTitle(It.IsAny<string>()))
-                              .Returns(new[] { new Book(2, "", "", "") });
+                              .Returns(new[] { new Book(2, "", "", "", "", 0m) });
 
             var bookService = new BookService(bookRepositoryStub.Object);
             var actual = bookService.GetAllByQuery("Jhon A");
