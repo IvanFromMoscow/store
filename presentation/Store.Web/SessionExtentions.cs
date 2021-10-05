@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Store.Web
 {
-    public static class SessionExtemcions
+    public static class SessionExtentions
     {
         private const string key = "Cart"; 
         public static void  Set(this ISession session, Cart value)
