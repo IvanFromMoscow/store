@@ -38,6 +38,7 @@ namespace Store.Web
             );
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSingleton<IBookRepository, BookRepository>();
+            services.AddSingleton<IOrderRepository, OrderRepository>();
             services.AddSingleton<BookService>();
         }
 
