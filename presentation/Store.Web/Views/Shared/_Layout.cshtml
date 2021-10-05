@@ -26,23 +26,17 @@
             <button class="btn btn-success my-2 my-sm-0" type="submit">Найти</button>
         </form>
         <span class="navbar-text ml-auto">
-            @{ 
-                Cart cart;
-
-                if (!Context.Session.TryGetCart(out cart))
+            @{
+                if (Context.Session.TryGetCart(out Cart cart) && cart.TotalCount > 0)
                 {
-                    cart = new Cart();
-                }
-               
-                if (cart.Items.Count == 0)
-                {
-                    @:Корзина пуста
+                    @:Товаров @cart.TotalCount на сумму @cart.TotalPrice
                 }
                 else
                 {
-                   @:Товаров @cart.Items.Count на сумму @cart.Ammount
+                    @:Корзина пуста
+
                 }
-            }
+              }
         </span> 
     </header>
     <div class="container body-content">
