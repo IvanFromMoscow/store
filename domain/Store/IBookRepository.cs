@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace Store
 {
     public interface IBookRepository
@@ -7,5 +9,6 @@ namespace Store
 
         Book[] GetAllByIsbn(string isbn);
         Book GetById(int id);
+        Book[] GetAllByIds(IEnumerable<int> bookIds);
     }
 }

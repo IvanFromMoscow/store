@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Store.Memory
@@ -24,6 +25,14 @@ namespace Store.Memory
             return books.Where(book => book.Author.Contains(query) || 
                                        book.Title.Contains(query))
                         .ToArray();
+        }
+
+        public Book[] GetAllByIds(IEnumerable<int> bookIds)
+        {
+            var foundBooks = from book in books
+                            join bookId in bookIds on book.Id equals bookId
+                            select book;
+            return foundBooks.ToArray();
         }
 
         public Book[] GetAllByIsbn(string isbn)
