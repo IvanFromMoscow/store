@@ -53,13 +53,13 @@ namespace Store.Web.Controllers
             return View("Empty");
         }
 
-        public IActionResult AddItem(int bookId, int count)
+        public IActionResult AddItem(int bookId, int count = 1)
         {
             (Order order, Cart cart) = GetOrCreateOrderAndCart();
             var book = bookRepository.GetById(bookId);
             order.AddOrUpdateItem(book, count);
             SaveOrderAndCart(order, cart);
-            return RedirectToAction("Index", "Book", new { bookId });
+            return RedirectToAction("Index", "Book", new { id = bookId });
         }
 
         public IActionResult RemoveItem(int id)
@@ -86,7 +86,7 @@ namespace Store.Web.Controllers
             (Order order, Cart cart) = GetOrCreateOrderAndCart();
             order.GetItem(bookId).Count = count;
             SaveOrderAndCart(order, cart);
-            return RedirectToAction("Index", "Book", new { bookId });
+            return RedirectToAction("Index", "Book", new { id = bookId });
         }
 
         IActionResult RemoveBook(int id)
